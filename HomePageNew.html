@@ -1,0 +1,119 @@
+<%--
+    Document   : HomePageNew
+    Created on : Dec 22, 2017, 1:14:05 AM
+    Author     : Sourav
+--%>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>User Homepage</title>
+        <style>
+            .left{
+                float: left;
+                height: 100%;
+                width:24%;
+            }
+            .right{
+                float:right;
+                height: 100%;
+                width:75%;
+            }
+            .color{
+                font-family: Courier;
+                background-color:  #3939ac;
+                color: #e0e0eb;
+                height: 20%;
+                font-size: 50px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron color">
+                <center>
+                <b>Welcome to SBD Bank</b>
+                </center>
+                <form action="Index.jsp" target="_parent" method="post">
+                    <table style="float:right;">
+                        <tr>
+                            <td><input type="submit" class="btn btn-danger" name="logOut" value="Log Out"></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+            <div class="jumbotron left">
+                <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="s"%>
+
+                <form action="Operations" method="post" target="_blank">
+
+                    <table class="table-condensed">
+                        <tr>
+                            <td><input type="submit" name="miniStmt"
+                                       value="Get Mini Statement" class="form-control btn-info"></td>
+                        </tr>
+
+                        <tr>
+                            <td><input class="form-control btn-info" type="submit" name="updateDetails"
+                                       value="Update Personal Details"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control btn-info" type="submit" name="chequeBook"
+                                       value="Apply for Cheque Book"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control btn-info" type="submit" name="fundTransfer"
+                                       value="Fund Transfer"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control btn-info" type="submit" name="chngPwd"
+                                       value="Change Password"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control btn-info" type="submit" name="trckReq"
+                                       value="View Cheque Book Status"></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <div class="jumbotron right">
+                <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="s"%>
+
+
+                <s:forEach var="accList" items="${accList}">
+                    <s:forEach var="userList" items="${userList}">
+                        <s:forEach var="custList" items="${custList}">
+
+                            <h3>Hello ${custList.customerName}</h3>
+                            <table class="table-condensed">
+                                <tr>
+                                    <td>Account Number</td>
+                                    <td>${accList.accountId}</td>
+                                </tr>
+                                <tr>
+                                    <td>Account Balance</td>
+                                    <td>${accList.accountBalance}</td>
+                                </tr>
+                                <tr>
+                                    <td>Account Type</td>
+                                    <td>${accList.accountType}</td>
+                                </tr>
+
+                            </table>
+                        </s:forEach>
+                    </s:forEach>
+                </s:forEach>
+            </div>
+        </div>
+    </body>
+</html>

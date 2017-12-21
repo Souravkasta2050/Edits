@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <link rel="stylesheet"
+  	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script
+  	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script
+  	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<style>
+  .fontstyle{
+    font-family: Courier;
+    font-size: 40px;
+    background-color:  #3939ac;
+  	color: #e0e0eb;
+  }
+</style>
+</head>
+<body background="biege">
+	<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="s"%>
+
+	<form action="Index.jsp" target="_parent" method="post">
+		<table align="right" class="table-condensed">
+			<tr>
+				<td><input type="submit" class="form-control btn-danger" name="logOut" value="Log Out"></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<br>
+
+	<hr>
+
+<div class="fontstyle">
+	<h1 align="center">
+		<b>Welcome to SBD Bank</b>
+	</h1>
+</div>
+	<hr>
+	<s:forEach var="accList" items="${accList}">
+		<s:forEach var="userList" items="${userList}">
+			<s:forEach var="custList" items="${custList}">
+
+				<h3>Hello ${custList.customerName}</h3>
+				<table class="table-condensed">
+					<tr>
+						<td>Account Number</td>
+						<td>${accList.accountId}</td>
+					</tr>
+					<tr>
+						<td>Account Balance</td>
+						<td>${accList.accountBalance}</td>
+					</tr>
+					<tr>
+						<td>Account Type</td>
+						<td>${accList.accountType}</td>
+					</tr>
+
+				</table>
+			</s:forEach>
+		</s:forEach>
+	</s:forEach>
+</body>
+</html>
